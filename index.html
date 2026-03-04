@@ -3,189 +3,138 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bangkok Bliss Luxury Spa</title>
+<title>Bangkok Bliss - Apple Smooth Spa</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<style>
-html { scroll-behavior: smooth; }
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-.hero-bg {
+<!-- LENIS Smooth Scroll -->
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+<style>
+body {
+  background: black;
+  color: white;
+  overflow-x: hidden;
+}
+
+.section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero {
   background-image: url("https://images.unsplash.com/photo-1544161515-4ab6ce6db874");
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
 }
 
-.gold-glow {
-  box-shadow: 0 0 20px rgba(234,179,8,0.6);
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
 }
 
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s ease;
-}
-
-.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
+.gold {
+  color: #eab308;
 }
 </style>
 
 </head>
 
-<body class="bg-black text-white">
+<body>
 
-<!-- NAVBAR -->
-<nav class="fixed w-full z-50 bg-black/40 backdrop-blur-md">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-    <h1 class="text-xl font-bold text-yellow-400 tracking-widest">
-      BANGKOK BLISS
-    </h1>
-    <div class="space-x-6 hidden md:block">
-      <a href="#about" class="hover:text-yellow-400">About</a>
-      <a href="#gallery" class="hover:text-yellow-400">Gallery</a>
-      <a href="#reviews" class="hover:text-yellow-400">Reviews</a>
-      <a href="#booking" class="hover:text-yellow-400">Booking</a>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero-bg h-screen relative flex items-center justify-center text-center">
-
-  <div class="absolute inset-0 bg-black/70"></div>
-
-  <div class="relative z-10 px-6 fade-in">
-    <h2 class="text-5xl md:text-7xl font-bold text-yellow-400 mb-6">
+<section class="section hero">
+  <div class="overlay"></div>
+  <div class="relative z-10 px-6">
+    <h1 class="text-5xl md:text-7xl font-bold gold title1">
       Luxury Spa Experience
+    </h1>
+  </div>
+</section>
+
+<section class="section bg-black">
+  <div>
+    <h2 class="text-4xl md:text-6xl font-bold gold title2">
+      Feel The Calm
     </h2>
-    <p class="max-w-xl mx-auto text-gray-300 mb-8">
-      5-Star Private Spa Sanctuary in Bangkok
-    </p>
-    <a href="#booking"
-       class="bg-yellow-500 text-black px-8 py-4 rounded-full font-bold hover:bg-yellow-400 gold-glow">
-       Reserve Now
-    </a>
-  </div>
-
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="py-24 text-center px-6 fade-in">
-  <h2 class="text-4xl font-bold text-yellow-400 mb-8">About Our Spa</h2>
-  <p class="max-w-3xl mx-auto text-gray-300 leading-relaxed">
-    Designed with elegance and candlelight ambiance, Bangkok Bliss offers
-    private luxury rooms, certified therapists, and premium spa treatments.
-  </p>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery" class="py-24 bg-gray-950 px-6 fade-in">
-  <h2 class="text-4xl font-bold text-yellow-400 text-center mb-16">
-    Our Atmosphere
-  </h2>
-
-  <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-    <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03" class="rounded-xl">
-    <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2" class="rounded-xl">
-    <img src="https://images.unsplash.com/photo-1552693673-1bf958298935" class="rounded-xl">
   </div>
 </section>
 
-<!-- REVIEWS -->
-<section id="reviews" class="py-24 text-center px-6 fade-in">
-  <h2 class="text-4xl font-bold text-yellow-400 mb-16">
-    Guest Reviews
-  </h2>
-
-  <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-
-    <div class="bg-gray-900 p-8 rounded-2xl">
-      ⭐⭐⭐⭐⭐
-      <p class="mt-4 text-gray-300">
-        “Best spa experience in Bangkok. Truly relaxing.”
-      </p>
-    </div>
-
-    <div class="bg-gray-900 p-8 rounded-2xl">
-      ⭐⭐⭐⭐⭐
-      <p class="mt-4 text-gray-300">
-        “Luxury atmosphere and professional therapists.”
-      </p>
-    </div>
-
-    <div class="bg-gray-900 p-8 rounded-2xl">
-      ⭐⭐⭐⭐⭐
-      <p class="mt-4 text-gray-300">
-        “Feels like a 5-star hotel spa.”
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<!-- BOOKING -->
-<section id="booking" class="py-24 bg-black px-6 fade-in">
-  <div class="max-w-lg mx-auto text-center">
-
-    <h2 class="text-4xl font-bold text-yellow-400 mb-10">
-      Book Your Session
+<section class="section bg-gray-900">
+  <div>
+    <h2 class="text-4xl md:text-6xl font-bold gold title3">
+      Pure Serenity
     </h2>
-
-    <input type="text" placeholder="Your Name"
-    class="w-full mb-4 p-4 rounded bg-gray-900 border border-gray-700">
-
-    <input type="text" placeholder="Phone Number"
-    class="w-full mb-4 p-4 rounded bg-gray-900 border border-gray-700">
-
-    <input type="date"
-    class="w-full mb-4 p-4 rounded bg-gray-900 border border-gray-700">
-
-    <input type="time"
-    class="w-full mb-6 p-4 rounded bg-gray-900 border border-gray-700">
-
-    <button
-    class="w-full bg-yellow-500 text-black font-bold py-4 rounded-full hover:bg-yellow-400 gold-glow">
-      Confirm Reservation
-    </button>
-
   </div>
 </section>
-
-<!-- MAP -->
-<section class="py-24 bg-gray-950 text-center fade-in">
-  <h2 class="text-4xl font-bold text-yellow-400 mb-10">
-    Location
-  </h2>
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.533236..."
-    width="100%"
-    height="300"
-    style="border:0;"
-    allowfullscreen=""
-    loading="lazy">
-  </iframe>
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-black py-10 text-center text-gray-500 text-sm">
-  © 2026 Bangkok Bliss Luxury Spa
-</footer>
 
 <script>
-const faders = document.querySelectorAll(".fade-in");
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
-  });
+// LENIS Smooth Scroll
+const lenis = new Lenis({
+  duration: 1.4,
+  smooth: true,
+  smoothTouch: true
 });
 
-faders.forEach(el => observer.observe(el));
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
+// GSAP + ScrollTrigger Sync
+gsap.registerPlugin(ScrollTrigger);
+
+lenis.on('scroll', ScrollTrigger.update);
+
+ScrollTrigger.scrollerProxy(document.body, {
+  scrollTop(value) {
+    return arguments.length
+      ? lenis.scrollTo(value)
+      : lenis.scroll.instance.scroll.y;
+  },
+  getBoundingClientRect() {
+    return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+  }
+});
+
+// Animation
+gsap.from(".title1", {
+  opacity: 0,
+  y: 100,
+  duration: 1.5
+});
+
+gsap.from(".title2", {
+  scrollTrigger: {
+    trigger: ".title2",
+    start: "top 80%"
+  },
+  opacity: 0,
+  y: 100,
+  duration: 1.5
+});
+
+gsap.from(".title3", {
+  scrollTrigger: {
+    trigger: ".title3",
+    start: "top 80%"
+  },
+  opacity: 0,
+  y: 100,
+  duration: 1.5
+});
+
 </script>
 
 </body>
