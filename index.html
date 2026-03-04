@@ -3,15 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bangkok Bliss - Apple Smooth Spa</title>
+<title>Motion Lab</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-<!-- LENIS Smooth Scroll -->
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
 
 <style>
@@ -27,114 +24,54 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  position: relative;
 }
 
-.hero {
-  background-image: url("https://images.unsplash.com/photo-1544161515-4ab6ce6db874");
-  background-size: cover;
-  background-position: center;
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-}
-
-.gold {
-  color: #eab308;
+.big-text {
+  font-size: 8vw;
+  font-weight: bold;
 }
 </style>
-
 </head>
 
 <body>
 
-<section class="section hero">
-  <div class="overlay"></div>
-  <div class="relative z-10 px-6">
-    <h1 class="text-5xl md:text-7xl font-bold gold title1">
-      Luxury Spa Experience
-    </h1>
-  </div>
+<section class="section">
+  <h1 class="big-text text1">Designed to Move.</h1>
 </section>
 
-<section class="section bg-black">
-  <div>
-    <h2 class="text-4xl md:text-6xl font-bold gold title2">
-      Feel The Calm
-    </h2>
-  </div>
+<section class="section">
+  <h1 class="big-text text2">Built to Inspire.</h1>
 </section>
 
-<section class="section bg-gray-900">
-  <div>
-    <h2 class="text-4xl md:text-6xl font-bold gold title3">
-      Pure Serenity
-    </h2>
-  </div>
+<section class="section">
+  <h1 class="big-text text3">Scroll is Power.</h1>
 </section>
 
 <script>
-
-// LENIS Smooth Scroll
-const lenis = new Lenis({
-  duration: 1.4,
-  smooth: true,
-  smoothTouch: true
-});
+const lenis = new Lenis({ duration: 1.4 });
 
 function raf(time) {
   lenis.raf(time);
   requestAnimationFrame(raf);
 }
-
 requestAnimationFrame(raf);
 
-// GSAP + ScrollTrigger Sync
 gsap.registerPlugin(ScrollTrigger);
 
 lenis.on('scroll', ScrollTrigger.update);
 
-ScrollTrigger.scrollerProxy(document.body, {
-  scrollTop(value) {
-    return arguments.length
-      ? lenis.scrollTo(value)
-      : lenis.scroll.instance.scroll.y;
-  },
-  getBoundingClientRect() {
-    return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
-  }
+gsap.utils.toArray(".section").forEach((section) => {
+  gsap.from(section.querySelector("h1"), {
+    scrollTrigger: {
+      trigger: section,
+      start: "top center",
+      end: "bottom center",
+      scrub: true
+    },
+    scale: 0.7,
+    opacity: 0.2
+  });
 });
-
-// Animation
-gsap.from(".title1", {
-  opacity: 0,
-  y: 100,
-  duration: 1.5
-});
-
-gsap.from(".title2", {
-  scrollTrigger: {
-    trigger: ".title2",
-    start: "top 80%"
-  },
-  opacity: 0,
-  y: 100,
-  duration: 1.5
-});
-
-gsap.from(".title3", {
-  scrollTrigger: {
-    trigger: ".title3",
-    start: "top 80%"
-  },
-  opacity: 0,
-  y: 100,
-  duration: 1.5
-});
-
 </script>
 
 </body>
