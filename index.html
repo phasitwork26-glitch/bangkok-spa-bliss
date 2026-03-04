@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Motion Lab Pro</title>
-
+<title>GSAP Training</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script src="https://unpkg.com/@studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
-
 <style>
 body{
   background:black;
@@ -21,102 +17,44 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  position:relative;
 }
-.big{
-  font-size:7vw;
-  font-weight:bold;
-}
-.circle{
-  width:300px;
-  height:300px;
-  border-radius:50%;
-  background:linear-gradient(45deg,#999,#fff);
+.box{
+  width:200px;
+  height:200px;
+  background:white;
 }
 </style>
 </head>
-
 <body>
 
-<!-- D Cinematic Intro -->
 <section class="section">
-  <h1 class="big intro">The Future.</h1>
+  <h1 class="text-6xl">Scroll Down</h1>
 </section>
 
-<!-- A Product Zoom -->
 <section class="section">
-  <div class="circle product"></div>
+  <div class="box"></div>
 </section>
 
-<!-- B Pinned Section -->
-<section class="section pin-section">
-  <h1 class="big pin-text">Power Unleashed.</h1>
-</section>
-
-<!-- C Floating Object -->
 <section class="section">
-  <div class="circle float"></div>
+  <h1 class="text-6xl">End</h1>
 </section>
 
 <script>
-
-// Smooth Scroll
-const lenis = new Lenis({ duration:1.3 });
-function raf(time){
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
-
 gsap.registerPlugin(ScrollTrigger);
-lenis.on('scroll', ScrollTrigger.update);
 
-// D Cinematic Reveal
-gsap.from(".intro",{
+let tl = gsap.timeline({
   scrollTrigger:{
-    trigger:".intro",
+    trigger:".box",
     start:"top center",
-    scrub:true
-  },
-  opacity:0,
-  y:200
-});
-
-// A Product Zoom
-gsap.to(".product",{
-  scrollTrigger:{
-    trigger:".product",
-    start:"top center",
-    end:"bottom center",
-    scrub:true
-  },
-  scale:2,
-  rotate:180
-});
-
-// B Pin Section
-gsap.to(".pin-text",{
-  scrollTrigger:{
-    trigger:".pin-section",
-    start:"top top",
     end:"+=1000",
     scrub:true,
     pin:true
-  },
-  scale:1.5
+  }
 });
 
-// C Floating Parallax
-gsap.to(".float",{
-  scrollTrigger:{
-    trigger:".float",
-    start:"top bottom",
-    end:"bottom top",
-    scrub:true
-  },
-  y:-300,
-  rotate:360
-});
+tl.to(".box",{scale:2})
+  .to(".box",{rotate:180})
+  .to(".box",{background:"red"});
 
 </script>
 
