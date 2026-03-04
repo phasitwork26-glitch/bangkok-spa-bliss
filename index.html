@@ -3,130 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luxury Spa Bangkok</title>
+<title>Bangkok Bliss Luxury Spa</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+html { scroll-behavior: smooth; }
+
+.gold-glow {
+  box-shadow: 0 0 20px rgba(234,179,8,0.6);
+}
+
+.hero-bg {
+  background-image: url("https://images.unsplash.com/photo-1544161515-4ab6ce6db874");
+  background-size: cover;
+  background-position: center;
+}
+</style>
 
 </head>
 
-<body class="bg-black text-white scroll-smooth">
+<body class="bg-black text-white">
 
-<!-- HERO -->
-<section class="h-screen flex flex-col justify-center items-center text-center px-6">
-  <h1 class="text-4xl md:text-6xl font-bold text-yellow-400 mb-6">
-    Luxury Spa & Massage
-  </h1>
-  <p class="text-gray-300 mb-8 max-w-xl">
-    Relax your body and mind in a candlelight atmosphere in Bangkok.
-  </p>
-  <a href="#booking"
-     class="bg-yellow-500 text-black px-6 py-3 rounded-lg font-bold hover:bg-yellow-400 transition">
-     Book Now
-  </a>
-</section>
-
-<!-- ABOUT -->
-<section class="py-20 bg-gray-900 text-center px-6">
-  <h2 class="text-3xl font-bold text-yellow-400 mb-6">About Us</h2>
-  <p class="max-w-2xl mx-auto text-gray-300">
-    We provide premium spa & massage services under soft candlelight atmosphere.
-    Located in Bangkok, our spa is designed for deep relaxation.
-  </p>
-</section>
-
-<!-- SERVICES -->
-<section class="py-20 text-center px-6">
-  <h2 class="text-3xl font-bold text-yellow-400 mb-12">Our Services</h2>
-
-  <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-
-    <div class="bg-gray-900 p-6 rounded-xl">
-      <h3 class="text-xl font-bold mb-3">Aroma Therapy</h3>
-      <p class="text-gray-400">60 mins - 1,200 THB</p>
-    </div>
-
-    <div class="bg-gray-900 p-6 rounded-xl">
-      <h3 class="text-xl font-bold mb-3">Thai Massage</h3>
-      <p class="text-gray-400">90 mins - 1,500 THB</p>
-    </div>
-
-    <div class="bg-gray-900 p-6 rounded-xl">
-      <h3 class="text-xl font-bold mb-3">Oil Massage</h3>
-      <p class="text-gray-400">60 mins - 1,300 THB</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- BOOKING -->
-<section id="booking" class="py-20 bg-gray-900 px-6">
-  <div class="max-w-md mx-auto">
-
-    <h2 class="text-3xl font-bold text-yellow-400 text-center mb-8">
-      Book Appointment
-    </h2>
-
-    <input id="name" type="text" placeholder="Your Name"
-    class="w-full mb-4 p-3 rounded bg-gray-800 border border-gray-700">
-
-    <input id="phone" type="text" placeholder="Phone Number"
-    class="w-full mb-4 p-3 rounded bg-gray-800 border border-gray-700">
-
-    <input id="date" type="date"
-    class="w-full mb-4 p-3 rounded bg-gray-800 border border-gray-700">
-
-    <input id="time" type="time"
-    class="w-full mb-6 p-3 rounded bg-gray-800 border border-gray-700">
-
-    <button onclick="bookNow()"
-    class="w-full bg-yellow-500 text-black font-bold py-3 rounded-lg hover:bg-yellow-400 transition">
-      Confirm Booking
-    </button>
-
-    <p id="message" class="mt-4 text-center"></p>
-
-  </div>
-</section>
-
-<script>
-
-const { createClient } = supabase;
-
-const client = createClient(
-  "https://eworiufajrgusnyuptme.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3b3JpdWZhanJndXNueXVwdG1lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI2MjM3MzEsImV4cCI6MjA4ODE5OTczMX0.8aKnFHsrQoUl5yvtMYQXmSTdE14N7Tkd1uhzu9KyPKs"
-);
-
-async function bookNow() {
-
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
-  const date = document.getElementById("date").value;
-  const time = document.getElementById("time").value;
-  const message = document.getElementById("message");
-
-  if (!name || !phone || !date || !time) {
-    message.innerText = "Please fill all fields.";
-    message.className = "mt-4 text-red-400 text-center";
-    return;
-  }
-
-  const { error } = await client
-    .from("bookings")
-    .insert([{ name, phone, date, time }]);
-
-  if (error) {
-    console.error(error);
-    message.innerText = "Booking failed!";
-    message.className = "mt-4 text-red-400 text-center";
-  } else {
-    message.innerText = "Booking successful!";
-    message.className = "mt-4 text-green-400 text-center";
-  }
-}
-
-</script>
-
-</body>
-</html>
+<!-- NAVBAR -->
+<nav class="fixed w-full z-50 bg-black/40 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold text-yellow-400 tracking-widest">
+      BANGKOK BLISS
+    </h1>
+    <div class="space-x-6 hidden md:block">
+      <a href="#about" class="hover:text-yellow-400 transition">About</a>
+      <a href="#services" class="hover:text-yellow-400 transition">Services</a>
+      <a href="#booking" class="hover:text-yellow-400 transition
